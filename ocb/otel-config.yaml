@@ -1,0 +1,22 @@
+receivers:
+  httplogreceiver:
+    endpoint: ":1111"
+
+processors:
+  batch:
+
+exporters:
+  logging:
+    verbosity: detailed
+
+service:
+
+  telemetry:
+    logs:
+      level: "debug"
+
+  pipelines:
+    logs:
+      receivers: [httplogreceiver]
+      processors: [batch]
+      exporters: [logging]
